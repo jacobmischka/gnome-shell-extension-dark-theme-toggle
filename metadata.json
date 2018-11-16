@@ -1,0 +1,6 @@
+{
+	"name": "Dark Theme Toggle",
+	"description": "Toggles between Adwaita and Adwaita-dark",
+	"uuid": "darkthemetoggle@jacob.mischka.me",
+	"shell-version": ["3.30.1"]
+}
