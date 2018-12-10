@@ -1,10 +1,10 @@
 UUID = darkthemetoggle@jacob.mischka.me
 EXTENSIONS_DIR = ~/.local/share/gnome-shell/extensions
 
-.PHONY: default install link
+.PHONY: install link
 
-default:
-	echo 'Run `make install` or `make link`'
+${UUID}.zip: ${UUID}
+	zip -j $<.zip $</*
 
 install: ${UUID}
 	cp -r $< ${EXTENSIONS_DIR}/
