@@ -2,5 +2,6 @@
 	"name": "Dark Theme Toggle",
 	"description": "Toggles between Adwaita and Adwaita-dark",
 	"uuid": "darkthemetoggle@jacob.mischka.me",
+	"url": "https://github.com/jacobmischka/gnome-shell-extension-dark-theme-toggle",
 	"shell-version": ["3.30.1"]
 }
