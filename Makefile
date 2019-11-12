@@ -1,4 +1,4 @@
-UUID = darkthemetoggle@jacob.mischka.me
+UUID = adwaita_papirus_dark-light_toggle@OldKnitterhemd
 EXTENSIONS_DIR = ~/.local/share/gnome-shell/extensions
 
 .PHONY: install link

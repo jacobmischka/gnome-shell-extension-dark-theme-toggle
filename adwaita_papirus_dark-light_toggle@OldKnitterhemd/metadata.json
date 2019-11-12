@@ -1,0 +1,7 @@
+{
+	"name": "Dark Theme Toggle",
+	"description": "Toggles between Adwaita theme & Papirus icons and Adwaita-dark theme & Papirus-Dark icons ",
+	"uuid": "adwaita_papirus_dark-light_toggle@OldKnitterhemd",
+	"url": "https://github.com/fbnkrs/gnome-shell-extension-dark-theme-toggle",
+	"shell-version": ["3.30.1"]
+}
