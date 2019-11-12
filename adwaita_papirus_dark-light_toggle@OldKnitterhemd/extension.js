@@ -14,6 +14,8 @@ const LIGHT_ICONS = 'Papirus';
 const DARK_ICONS = 'Papirus-Dark';
 const LIGHT_THEME = 'Adwaita';
 const DARK_THEME = 'Adwaita-dark';
+const APP_LIGHT = 'weather-clear-symbolic'
+const APP_DARK = 'weather-clear-night-symbolic'
 
 let button, settings;
 
@@ -29,15 +31,25 @@ function toggleTheme() {
 		? LIGHT_ICONS
 		: DARK_ICONS;
 
- 	settings.set_string(THEME_KEY, newTheme);
- 	settings.set_string(ICON_KEY, newIcons);
+	const icon = newTheme === LIGHT_THEME
+	? new St.Icon({
+		icon_name: APP_LIGHT,
+		style_class: 'system-status-icon'
+	})
+	: new St.Icon({
+		icon_name: APP_DARK,
+		style_class: 'system-status-icon'
+	})
+	settings.set_string(THEME_KEY, newTheme);
+	settings.set_string(ICON_KEY, newIcons);
+	button.actor.add_actor(icon);
 }
 
 function enable() {
 	button = new PanelMenu.Button(0.0);
 
 	const icon = new St.Icon({
-		icon_name: 'weather-clear-night-symbolic',
+		icon_name: APP_LIGHT,
 		style_class: 'system-status-icon'
 	});
 
