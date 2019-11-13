@@ -9,9 +9,6 @@ const LABEL_TEXT = 'Toggle dark theme';
 
 const SCHEMA_KEY = 'org.gnome.desktop.interface';
 const THEME_KEY = 'gtk-theme';
-const ICON_KEY = 'icon-theme';
-const LIGHT_ICONS = 'Papirus';
-const DARK_ICONS = 'Papirus-Dark';
 const LIGHT_THEME = 'Adwaita';
 const DARK_THEME = 'Adwaita-dark';
 const APP_LIGHT = 'weather-clear-symbolic'
@@ -27,16 +24,12 @@ function toggleTheme() {
 	const newTheme = settings.get_string(THEME_KEY) === LIGHT_THEME
 		? DARK_THEME
 		: LIGHT_THEME;
-	const newIcons = newTheme === LIGHT_THEME
-		? LIGHT_ICONS
-		: DARK_ICONS;
 
 	const icon = newTheme === LIGHT_THEME
 	? APP_LIGHT
 	: APP_DARK;
 	
 	settings.set_string(THEME_KEY, newTheme);
-	settings.set_string(ICON_KEY, newIcons);
 	_icon.gicon= Gio.icon_new_for_string(icon);
 
 }
@@ -55,6 +48,5 @@ function enable() {
 
 function disable() {
 	button.destroy();
-	//_icon.destroy();
 }
 
