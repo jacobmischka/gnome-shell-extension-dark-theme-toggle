@@ -17,7 +17,7 @@ const DARK_THEME = 'Adwaita-dark';
 const APP_LIGHT = 'weather-clear-symbolic'
 const APP_DARK = 'weather-clear-night-symbolic'
 
-let button, settings,_icon;
+let button, settings, _icon;
 
 function init() {
 	settings = new Gio.Settings({ schema: SCHEMA_KEY });
@@ -32,33 +32,29 @@ function toggleTheme() {
 		: DARK_ICONS;
 
 	const icon = newTheme === LIGHT_THEME
-	? new St.Icon({
-		icon_name: APP_LIGHT,
-		style_class: 'system-status-icon'
-	})
-	: new St.Icon({
-		icon_name: APP_DARK,
-		style_class: 'system-status-icon'
-	})
+	? APP_LIGHT
+	: APP_DARK;
+	
 	settings.set_string(THEME_KEY, newTheme);
 	settings.set_string(ICON_KEY, newIcons);
-	this._icon.gicon= Gio.icon_new_for_string(icon);
+	_icon.gicon= Gio.icon_new_for_string(icon);
 
 }
 
 function enable() {
 	button = new PanelMenu.Button(0.0);
 
-	this._icon = new St.Icon({
+	_icon = new St.Icon({
 		style_class: 'system-status-icon'
 	});
-	this._icon.gicon= Gio.icon_new_for_string(APP_DARK);
-	button.actor.add_actor(icon);
+	_icon.gicon= Gio.icon_new_for_string(APP_DARK);
+	button.actor.add_actor(_icon);
 	button.actor.connect('button-press-event', toggleTheme);
 	Main.panel.addToStatusArea('ToggleDarkTheme', button);
 }
 
 function disable() {
 	button.destroy();
+	//_icon.destroy();
 }
 
