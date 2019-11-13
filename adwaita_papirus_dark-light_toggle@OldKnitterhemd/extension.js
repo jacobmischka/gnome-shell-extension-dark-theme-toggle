@@ -11,8 +11,10 @@ const SCHEMA_KEY = 'org.gnome.desktop.interface';
 const THEME_KEY = 'gtk-theme';
 const LIGHT_THEME = 'Adwaita';
 const DARK_THEME = 'Adwaita-dark';
+const APP_LIGHT = 'weather-clear-symbolic'
+const APP_DARK = 'weather-clear-night-symbolic'
 
-let button, settings;
+let button, settings, _icon;
 
 function init() {
 	settings = new Gio.Settings({ schema: SCHEMA_KEY });
@@ -23,18 +25,23 @@ function toggleTheme() {
 		? DARK_THEME
 		: LIGHT_THEME;
 
+	const icon = newTheme === LIGHT_THEME
+	? APP_LIGHT
+	: APP_DARK;
+	
 	settings.set_string(THEME_KEY, newTheme);
+	_icon.gicon= Gio.icon_new_for_string(icon);
+
 }
 
 function enable() {
 	button = new PanelMenu.Button(0.0);
 
-	const icon = new St.Icon({
-		icon_name: 'weather-clear-night-symbolic',
+	_icon = new St.Icon({
 		style_class: 'system-status-icon'
 	});
-
-	button.actor.add_actor(icon);
+	_icon.gicon= Gio.icon_new_for_string(APP_DARK);
+	button.actor.add_actor(_icon);
 	button.actor.connect('button-press-event', toggleTheme);
 	Main.panel.addToStatusArea('ToggleDarkTheme', button);
 }
