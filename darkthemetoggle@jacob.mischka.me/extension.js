@@ -11,6 +11,10 @@ const SCHEMA_KEY = 'org.gnome.desktop.interface';
 const THEME_KEY = 'gtk-theme';
 const LIGHT_THEME = 'Adwaita';
 const DARK_THEME = 'Adwaita-dark';
+//const LIGHT_THEME = 'Yaru';
+//const DARK_THEME = 'Yaru-dark';
+//const LIGHT_THEME = 'Arc';
+//const DARK_THEME = 'Arc-dark';
 
 let button, settings;
 
